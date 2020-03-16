@@ -7,13 +7,17 @@ on:
     branches: [ master ]
 
 jobs:
-  build-macos:
+  build:
+
     runs-on: macos-latest
     
+    env:
+      CFLAGS: "-I/usr/local/opt/openssl/include/"
+      LDFLAGS: "-L/usr/local/opt/openssl/lib/"
+    
     steps:
-      - uses: actions/checkout@v2
-      - name: envset
-        env:
-          CFLAGS: "-I/usr/local/opt/openssl/include/"
-          LDFLAGS: "-L/usr/local/opt/openssl/lib/"
-
+    - uses: actions/checkout@v2
+    - name: make
+      run: make
+    - name: openssl
+      run: find /usr -type f -name md5.h
