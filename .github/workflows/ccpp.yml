@@ -9,11 +9,7 @@ on:
 jobs:
   build:
 
-    runs-on: macos-latest
-    
-    env:
-      CFLAGS: "-I/usr/local/ssl/include/"
-      LDFLAGS: "-L/usr/local/ssl/lib/"
+    runs-on: ubuntu-latest
     
     steps:
     - uses: actions/checkout@v2
