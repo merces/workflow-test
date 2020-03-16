@@ -16,6 +16,8 @@ jobs:
         env:
           CFLAGS: "-I/usr/local/opt/openssl/include/"
           LDFLAGS: "-L/usr/local/opt/openssl/lib/"
+      
+      - uses: actions/checkout@v2
       - name: make
         run: CFLAGS= LDFLAGS= make
 
