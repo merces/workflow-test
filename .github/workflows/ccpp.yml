@@ -20,5 +20,8 @@ jobs:
     
     steps:
       - uses: actions/checkout@v2
+      - name: installdeps
+        run: brew install openssl
       - name: make
         run: CFLAGS="-I/usr/local/opt/openssl/include/" LDFLAGS="-L/usr/local/opt/openssl/lib/" make
+
