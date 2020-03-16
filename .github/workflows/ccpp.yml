@@ -7,21 +7,15 @@ on:
     branches: [ master ]
 
 jobs:
-  build-linux:
-    runs-on: ubuntu-latest
-    
-    steps:
-    - uses: actions/checkout@v2
-    - name: make
-      run: make
-
   build-macos:
     runs-on: macos-latest
     
     steps:
       - uses: actions/checkout@v2
-      - name: installdeps
-        run: brew install openssl
+      - name: envset
+        env:
+          CFLAGS: "-I/usr/local/opt/openssl/include/"
+          LDFLAGS: "-L/usr/local/opt/openssl/lib/"
       - name: make
-        run: CFLAGS="-I/usr/local/opt/openssl/include/" LDFLAGS="-L/usr/local/opt/openssl/lib/" make
+        run: CFLAGS= LDFLAGS= make
 
